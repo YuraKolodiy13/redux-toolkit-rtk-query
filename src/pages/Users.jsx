@@ -39,6 +39,7 @@ const Users = () => {
           value={newUser.first_name}
           onChange={e => setNewUser({...newUser, first_name: e.target.value})}
         />
+        
         <TextField
           label="Last Name"
           variant="outlined"
