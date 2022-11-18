@@ -5,49 +5,49 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import ListItemText from "@mui/material/ListItemText";
-import {useCreateUserMutation, useGetUsersQuery, useRemoveUserMutation} from "../store/reqres/reqres.api";
+import {useGetUsersQuery, useRemoveUserMutation} from "../store/reqres/reqres.api";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Pagination from "@mui/material/Pagination";
-import TextField from "@mui/material/TextField";
 import {Link} from "react-router-dom";
+import UserModal from "../components/UserModal";
+import Button from "@mui/material/Button";
 
 const Users = () => {
 
   const [page, setPage] = useState(1);
   const itemsPerPage = 6;
-  const [newUser, setNewUser] = useState({first_name: '', last_name: ''})
   const {data: users = {}} = useGetUsersQuery({page, itemsPerPage});
-  const [createUser] = useCreateUserMutation();
   const [removeUser] = useRemoveUserMutation();
+  const [isUserModalOpen, setIsUserModalOpen] = useState(false);
+  const [user, setUser] = useState(null);
 
   const handleRemoveUser = (id) => {
     setPage(Math.ceil((users.totalCount - 1) / itemsPerPage));
     removeUser(id);
   }
-  const handleEditUser = (id) => {
-    removeUser(id);
+  const handleEditUser = (user) => {
+    setUser(user);
+    setIsUserModalOpen(true)
+  }
+
+  const closeUserModal = () => {
+    setUser(null);
+    setIsUserModalOpen(false);
   }
 
   return (
     <div className="Users">
-      <div className="users__create">
-        <TextField
-          label="First Name"
-          variant="outlined"
-          value={newUser.first_name}
-          onChange={e => setNewUser({...newUser, first_name: e.target.value})}
+      <Button variant="contained" onClick={() => setIsUserModalOpen(true)}>Add user</Button>
+      {isUserModalOpen && (
+        <UserModal
+          isUserModalOpen={isUserModalOpen}
+          closeModal={closeUserModal}
+          user={user}
         />
-        
-        <TextField
-          label="Last Name"
-          variant="outlined"
-          value={newUser.last_name}
-          onChange={e => setNewUser({...newUser, last_name: e.target.value})}
-        />
-        <button onClick={() => createUser(newUser)}>Add</button>
-      </div>
+      )}
+
       <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
         {users.data?.map((item) => (
           <ListItem
@@ -55,7 +55,7 @@ const Users = () => {
             key={item.id}
             secondaryAction={
               <>
-                <IconButton edge="end" aria-label="edit" onClick={() => handleEditUser(item.id)}>
+                <IconButton edge="end" aria-label="edit" onClick={() => handleEditUser(item)}>
                   <EditIcon />
                 </IconButton>
                 <IconButton edge="end" aria-label="delete" onClick={() => handleRemoveUser(item.id)}>
