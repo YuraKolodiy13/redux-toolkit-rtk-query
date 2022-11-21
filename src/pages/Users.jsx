@@ -11,7 +11,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Pagination from "@mui/material/Pagination";
 import {Link} from "react-router-dom";
-import UserModal from "../components/UserModal";
+import UserModal from "../components/modals/UserModal/UserModal";
 import Button from "@mui/material/Button";
 
 const Users = () => {

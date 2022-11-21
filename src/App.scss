@@ -1,5 +1,5 @@
 main{
-  margin-top: 80px;
+  margin-top: 100px;
 }
 nav a{
   padding: 6px 8px;
@@ -9,4 +9,8 @@ nav a{
   &.active{
     color: orange;
   }
+}
+.App{
+  max-width: 1000px;
+  margin: 0 auto;
 }

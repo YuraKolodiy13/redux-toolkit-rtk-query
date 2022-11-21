@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useGetPostsQuery} from "../store/reqres/reqres.api";
+import {useGetPostsQuery} from "../../store/reqres/reqres.api";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";

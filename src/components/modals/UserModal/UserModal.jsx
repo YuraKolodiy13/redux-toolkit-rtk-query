@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import TextField from "@mui/material/TextField";
-import {useCreateUserMutation, useEditUserMutation} from "../store/reqres/reqres.api";
+import {useCreateUserMutation, useEditUserMutation} from "../../../store/reqres/reqres.api";
 import Modal from "@mui/material/Modal";
 import Backdrop from "@mui/material/Backdrop";
 import Fade from "@mui/material/Fade";
