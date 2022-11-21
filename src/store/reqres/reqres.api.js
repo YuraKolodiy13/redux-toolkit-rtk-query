@@ -2,7 +2,7 @@ import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 
 export const reqresApi = createApi({
   reducerPath: 'reqres/api',
-  tagTypes: ['Users'],
+  tagTypes: ['Users', 'Posts'],
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://localhost:9001/'
   }),
@@ -58,8 +58,30 @@ export const reqresApi = createApi({
       query: () => ({
         url: 'faq',
       }),
+    }),
+    getPosts: build.query({
+      query: ({page, itemsPerPage}) => ({
+        url: 'posts',
+        params: {
+          _page: page,
+          _limit: itemsPerPage
+        }
+      }),
+      providesTags: (result) =>  ['Posts'],
+      transformResponse(response, meta) {
+        return {data: response, totalCount: Number(meta.response.headers.get('X-Total-Count'))}
+      }
+    }),
+    getPost: build.query({
+      query: (id) => ({
+        url: `posts/${id}`,
+      }),
+    }),
+    getPostComments: build.query({
+      query: (id) => ({
+        url: `posts/${id}/comments`,
+      }),
     })
-
   }),
 })
 
@@ -69,5 +91,8 @@ export const {
   useCreateUserMutation,
   useRemoveUserMutation,
   useEditUserMutation,
-  useGetFaqQuery
+  useGetFaqQuery,
+  useGetPostsQuery,
+  useGetPostQuery,
+  useGetPostCommentsQuery,
 } = reqresApi;

@@ -11,8 +11,6 @@ const User = () => {
   const {id} = useParams();
   const {data: user = {}} = useGetUserQuery(id);
 
-  console.log(user, 'user')
-
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
