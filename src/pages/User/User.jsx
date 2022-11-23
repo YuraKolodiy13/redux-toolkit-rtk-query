@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import {useGetUserQuery} from "../store/reqres/reqres.api";
+import {useGetUserQuery} from "../../store/reqres/reqres.api";
 import {useParams} from "react-router-dom";
 
 const User = () => {

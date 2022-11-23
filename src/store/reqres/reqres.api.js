@@ -77,6 +77,29 @@ export const reqresApi = createApi({
         url: `posts/${id}`,
       }),
     }),
+    editPost: build.mutation({
+      query: (body) => ({
+        url: `posts/${body.id}`,
+        method: 'PUT',
+        body
+      }),
+      invalidatesTags: ['Posts']
+    }),
+    removePost: build.mutation({
+      query: (id) => ({
+        url: `posts/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Posts']
+    }),
+    createPost: build.mutation({
+      query: (body) => ({
+        url: 'posts',
+        method: 'POST',
+        body
+      }),
+      invalidatesTags: ['Posts']
+    }),
     getPostComments: build.query({
       query: (id) => ({
         url: `posts/${id}/comments`,
@@ -94,5 +117,8 @@ export const {
   useGetFaqQuery,
   useGetPostsQuery,
   useGetPostQuery,
+  useEditPostMutation,
+  useCreatePostMutation,
+  useRemovePostMutation,
   useGetPostCommentsQuery,
 } = reqresApi;

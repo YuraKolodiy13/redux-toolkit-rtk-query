@@ -1,24 +1,23 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import {useGetUsersQuery} from "../../store/reqres/reqres.api";
 import MenuItem from "@mui/material/MenuItem";
-import {Navigate, useNavigate} from "react-router-dom";
+import {Navigate} from "react-router-dom";
+import {setUser} from "../../store/reqres/auth.slice";
+import {useDispatch, useSelector} from "react-redux";
 
 const Login = () => {
 
-  // const navigate = useNavigate();
+  const user = useSelector((state) => state.auth.user);
   const {data: users = {}} = useGetUsersQuery({page: 1, itemsPerPage: 1000});
-  const [user, setUser] = useState(null);
+  const dispatch = useDispatch();
 
-  const handleChange = (e) => {
-    localStorage.setItem('user', JSON.stringify(e.target.value));
-    setUser(e.target.value);
-  }
+  if(user) return <Navigate replace to="/" />;
 
-  if(localStorage.getItem('user')) return <Navigate replace to="/" />;
+  console.log(setUser, 'setUser')
 
   return (
     <div>
@@ -28,12 +27,12 @@ const Login = () => {
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={user}
+            value={user || ''}
             label="Please choose the user"
-            onChange={handleChange}
+            onChange={e => dispatch(setUser(e.target.value))}
           >
             {users.data?.map(item =>
-              <MenuItem value={item}>{item.first_name} {item.last_name}</MenuItem>
+              <MenuItem key={item.id} value={item}>{item.first_name} {item.last_name}</MenuItem>
             )}
           </Select>
         </FormControl>

@@ -5,13 +5,13 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import ListItemText from "@mui/material/ListItemText";
-import {useGetUsersQuery, useRemoveUserMutation} from "../store/reqres/reqres.api";
+import {useGetUsersQuery, useRemoveUserMutation} from "../../store/reqres/reqres.api";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Pagination from "@mui/material/Pagination";
 import {Link} from "react-router-dom";
-import UserModal from "../components/modals/UserModal/UserModal";
+import UserModal from "../../components/modals/UserModal/UserModal";
 import Button from "@mui/material/Button";
 
 const Users = () => {
