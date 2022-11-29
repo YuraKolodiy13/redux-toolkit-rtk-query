@@ -37,6 +37,22 @@ export const reqresApi = createApi({
       invalidatesTags: ['Users']
       // invalidatesTags: [{type: 'Users', id: 'LIST'}]
     }),
+    signIn: build.mutation({
+      query: (body) => ({
+        url: 'signin',
+        method: 'POST',
+        body
+      }),
+      invalidatesTags: ['Users']
+    }),
+    signUp: build.mutation({
+      query: (body) => ({
+        url: 'signup',
+        method: 'POST',
+        body
+      }),
+      invalidatesTags: ['Users']
+    }),
     editUser: build.mutation({
       query: (body) => ({
         url: `users/${body.id}`,
@@ -121,4 +137,6 @@ export const {
   useCreatePostMutation,
   useRemovePostMutation,
   useGetPostCommentsQuery,
+  useSignInMutation,
+  useSignUpMutation,
 } = reqresApi;

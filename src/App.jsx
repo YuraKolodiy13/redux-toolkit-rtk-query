@@ -9,6 +9,8 @@ import './App.scss';
 import Header from "./components/Header/Header";
 import Login from "./pages/Login/Login";
 import Homepage from "./pages/Homepage/Homepage";
+import SignIn from "./pages/Auth/SignIn";
+import SignUp from "./pages/Auth/SignUp";
 
 const App = () => {
 
@@ -25,7 +27,8 @@ const App = () => {
             <Route path='/users' element={<Users/>}/>
             <Route path='/users/:id' element={<User/>}/>
             <Route path='/faq' element={<Faq/>}/>
-            <Route path='/login' element={<Login/>}/>
+            <Route path='/sign-in' element={<SignIn/>}/>
+            <Route path='/sign-up' element={<SignUp/>}/>
           </Routes>
         </main>
       </BrowserRouter>

@@ -3,6 +3,7 @@
     {
       "id": 2,
       "email": "janet.weaver@reqres.in",
+      "password": "111111",
       "first_name": "Janet",
       "last_name": "Weaver",
       "avatar": "https://reqres.in/img/faces/2-image.jpg"
@@ -38,7 +39,7 @@
     {
       "id": 12,
       "email": "rachel.howell@reqres.in",
-      "first_name": "Rachel",
+      "first_name": "Racheluuuuuuu",
       "last_name": "Howell",
       "avatar": "https://reqres.in/img/faces/12-image.jpg"
     },
@@ -76,6 +77,16 @@
       "first_name": "rwe4444",
       "last_name": "4324",
       "id": 27
+    },
+    {
+      "email": "yy@yy.yy",
+      "password": "$2a$10$Nf8x1Nje3j1aEDARRsrdg.VTUmsxZ5nueZIRABx1KyCf2iJ9x4AKm",
+      "id": 28
+    },
+    {
+      "email": "aa@aa.aa",
+      "password": "$2a$10$dBFjM0YB27KVq0J.PrLjlegi7b2S1jf3nJWH2v.FP.se0Lh4Ht0R6",
+      "id": 29
     }
   ],
   "faq": [
@@ -705,6 +716,17 @@
       "body": "543534534",
       "idUser": 11,
       "id": 102
+    },
+    {
+      "title": "767",
+      "body": "7777",
+      "idUser": 2,
+      "id": 103
+    },
+    {
+      "title": "fds",
+      "body": "ffff",
+      "id": 104
     }
   ],
   "comments": [

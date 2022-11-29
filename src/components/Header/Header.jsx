@@ -33,7 +33,8 @@ const Header = () => {
           <NavLink to='/posts'>posts</NavLink>
           <NavLink to='/users'>users</NavLink>
           <NavLink to='/faq'>faq</NavLink>
-          {!user && <NavLink to='/login'>login</NavLink>}
+          {!user && <NavLink to='/sign-in'>Sign in</NavLink>}
+          {!user && <NavLink to='/sign-up'>Sign up</NavLink>}
         </Box>
         {user && (
           <Box sx={{ flexGrow: 0, ml: 2 }}>
